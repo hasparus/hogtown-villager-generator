@@ -239,7 +239,15 @@ export function generateVillager(): Villager {
   };
 }
 
-function Stat({ name, value, mod }: { name: string; value: number; mod: number }) {
+function Stat({
+  name,
+  value,
+  mod,
+}: {
+  name: string;
+  value: number;
+  mod: number;
+}) {
   const modColor = mod > 0 ? "green" : mod < 0 ? "red" : "gray";
   return (
     <Box>
@@ -270,23 +278,35 @@ function parseGear(gearStr: string): string[] {
 
 function VillagerCard({ v }: { v: Villager }) {
   const speciesColor =
-    v.species === "Dwarf" ? "red" :
-    v.species === "Elf" ? "cyan" :
-    v.species === "Halfling" ? "green" : "white";
+    v.species === "Dwarf"
+      ? "red"
+      : v.species === "Elf"
+      ? "cyan"
+      : v.species === "Halfling"
+      ? "green"
+      : "white";
 
   const gearItems = v.gear.flatMap(parseGear);
 
   return (
-    <Box flexDirection="column" borderStyle="round" borderColor="yellow" paddingX={2} paddingY={1} marginBottom={1}>
+    <Box
+      flexDirection="column"
+      borderStyle="round"
+      borderColor="yellow"
+      paddingX={2}
+      paddingY={1}
+      marginBottom={1}
+    >
       <Box marginBottom={1}>
-        <Text bold color="yellow">{v.name}</Text>
+        <Text bold color="yellow">
+          {v.name}
+        </Text>
         <Text> the </Text>
         <Text bold>{v.occupation}</Text>
       </Box>
 
       <Box>
-        <Text color={speciesColor}>{v.species}</Text>
-        <Text dimColor>  •  {v.look}</Text>
+        <Text dimColor>{v.look}</Text>
       </Box>
 
       <Box marginTop={1} gap={2}>
@@ -304,32 +324,62 @@ function VillagerCard({ v }: { v: Villager }) {
       </Box>
 
       <Box marginTop={1} gap={3}>
-        <Text><Text color="red" bold>HP</Text> {v.hp}</Text>
-        <Text><Text color="blue" bold>Load</Text> {v.load}</Text>
-        <Text><Text color="magenta" bold>Damage</Text> {v.damage}</Text>
+        <Text>
+          <Text color="red" bold>
+            HP
+          </Text>{" "}
+          {v.hp}
+        </Text>
+        <Text>
+          <Text color="blue" bold>
+            Load
+          </Text>{" "}
+          {v.load}
+        </Text>
+        <Text>
+          <Text color="magenta" bold>
+            Damage
+          </Text>{" "}
+          {v.damage}
+        </Text>
       </Box>
 
       <Box flexDirection="column" marginTop={1}>
-        <Text color="cyan" bold>GEAR</Text>
+        <Text color="cyan" bold>
+          GEAR
+        </Text>
         {gearItems.map((item, i) => (
-          <Text key={i}>  • {item}</Text>
+          <Text key={i}> • {item}</Text>
         ))}
       </Box>
 
       <Box flexDirection="column" marginTop={1}>
-        <Text color="cyan" bold>BOND</Text>
-        <Text>  {v.bond}</Text>
+        <Text color="cyan" bold>
+          BOND
+        </Text>
+        <Text> {v.bond}</Text>
       </Box>
 
       <Box flexDirection="column" marginTop={1}>
-        <Text color="cyan" bold>MOVES</Text>
+        <Text color="cyan" bold>
+          MOVES
+        </Text>
         {v.heritageMoves.map((move, i) => (
           <Box key={`heritage-${i}`} flexDirection="column">
-            <Text wrap="wrap">  • <Text color={speciesColor}>({v.species})</Text> {move}</Text>
+            <Text wrap="wrap">
+              {" "}
+              • <Text color={speciesColor}>({v.species})</Text> {move}
+            </Text>
           </Box>
         ))}
         <Box flexDirection="column">
-          <Text wrap="wrap">  • <Text bold>Know Your Stuff:</Text> When you Spout Lore or Discern Realities about something related to your occupation, tell the GM why you deserve advantage and take it if they agree. When you have the resources to do something you know how to do, you do it.</Text>
+          <Text wrap="wrap">
+            {" "}
+            • <Text bold>Know Your Stuff:</Text> When you Spout Lore or Discern
+            Realities about something related to your occupation, tell the GM
+            why you deserve advantage and take it if they agree. When you have
+            the resources to do something you know how to do, you do it.
+          </Text>
         </Box>
       </Box>
     </Box>
