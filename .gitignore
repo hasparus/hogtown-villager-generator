@@ -1,0 +1,29 @@
+# deps
+node_modules
+
+# assets
+*.pdf
+
+# output
+out
+dist
+*.tgz
+
+# env
+.env
+.env*.local
+
+# logs
+*.log
+
+# caches
+.eslintcache
+.cache
+*.tsbuildinfo
+
+# editors
+.idea
+.cursor
+
+# os
+.DS_Store
