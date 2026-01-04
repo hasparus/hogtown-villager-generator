@@ -220,8 +220,8 @@ export function generateVillager(): Villager {
   };
 
   const occ = getOccupation(roll("1d100"));
-  const hp = stats.CON + 4;
-  const load = stats.STR + 4;
+  const hp = modifiers.CON + 4;
+  const load = modifiers.STR + 4;
 
   return {
     name: getName(occ.species),
